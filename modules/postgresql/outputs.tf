@@ -101,17 +101,16 @@ output "generated_user_password" {
 output "primary" {
   value       = google_sql_database_instance.default
   description = "The `google_sql_database_instance` resource representing the primary instance"
-  sensitive   = false
+  sensitive   = true
 }
 
 output "replicas" {
   value       = values(google_sql_database_instance.replicas)
   description = "A list of `google_sql_database_instance` resources representing the replicas"
-  sensitive   = false
 }
 
 output "instances" {
   value       = concat([google_sql_database_instance.default], values(google_sql_database_instance.replicas))
   description = "A list of all `google_sql_database_instance` resources we've created"
-  sensitive   = false
+  sensitive   = true
 }
